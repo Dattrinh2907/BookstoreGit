@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BanSach.Models.LoaiSach>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>Loại sách</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới loại sách", "Create")
+</p>
+<div class="main-info">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+
+            <tr>
+                <th>
+                    Tên loại
+                </th>
+                <th>
+                    Ghi chú
+                </th>
+                <th>Tùy chỉnh</th>
+            </tr>
+        </thead>
+        <tfoot>
+
+            <tr>
+                <th>
+                    Tên loại
+                </th>
+                <th>
+                    Ghi chú
+                </th>
+                <th>Tùy chỉnh</th>
+            </tr>
+        </tfoot>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenLoai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GhiChu)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MaLoai }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.MaLoai }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MaLoai })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+    </div>

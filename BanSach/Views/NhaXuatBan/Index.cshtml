@@ -1,0 +1,97 @@
+﻿@model IEnumerable<BanSach.Models.NhaXuatBan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>Nhà xuất bản</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<div class="main-info">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TenNXB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DiaChi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SDT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Website)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tfoot>
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TenNXB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DiaChi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SDT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Website)
+                </th>
+                <th></th>
+            </tr>
+        </tfoot>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenNXB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SDT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fax)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Website)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MaNXB }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.MaNXB }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MaNXB })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    </div>

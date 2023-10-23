@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BanSach.Models.KhachHang>
+
+@{
+    ViewBag.Title = "KHách hàng";
+    Layout = "~/Views/Shared/_layout_Admin.cshtml";
+}
+
+
+<div class="header-info">
+    <h1>Khách hàng</h1>
+</div>
+<div class="main-info">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+
+
+            <tr>
+                <th>
+                    Username
+                </th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>
+                    Điện Thoại
+                </th>
+                <th>Trạng thái</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>
+                    Username
+                </th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>
+                    Điện Thoại
+                </th>
+                <th>Trạng thái</th>
+                <th>Chức năng</th>
+            </tr>
+        </tfoot>
+        <tbody>
+
+            @foreach (var item in Model)
+
+            {
+                <tr>
+                    <td class="col-lg-1">@item.UsernameKH</td>
+                    <td class="col-lg-2"> @item.HoKH @item.TenKH</td>
+                    <td class="col-lg-2">@item.TaiKhoan.Email</td>
+                    <td class="col-lg-2">
+                        @Html.DisplayFor(modelItem => item.DienThoai)
+                    </td>
+                    <td class="col-lg-2">
+                        @if (item.TaiKhoan.block == false)
+                        {
+                            <span style="color:green;">Được kích hoạt</span><button style="float: right;background-color: red;border: 0;color: white;" onclick="location.href='@Url.Action("Block", "Account", new { username = item.UsernameKH })'">Khóa</button>
+                        }
+                        else
+                        {
+                            <span style="color:red;">Bị khóa</span><button style="float: right;background-color: green;border: 0;color: white;" onclick="location.href='@Url.Action("Block", "Account", new { username = item.UsernameKH })'">Kích hoạt</button>
+                        }
+                    </td>
+                    <td class="col-lg-1">
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaKH }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.MaKH })
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+
+    </table>
+</div>

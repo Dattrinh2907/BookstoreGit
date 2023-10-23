@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BanSach.Models.TacGia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="header-info">
+    <h1>Tác giả</h1>
+</div>
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<div class="main-info">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+
+            <tr>
+                <th>
+                    Tên tác giả
+                </th>
+                <th>
+                    Ngày sinh
+                </th>
+                <th>
+                    Quốc tịch
+                </th>
+                <th>Tùy chỉnh</th>
+            </tr>
+        </thead>
+        <tfoot>
+
+            <tr>
+                <th>
+                    Tên tác giả
+                </th>
+                <th>
+                    Ngày sinh
+                </th>
+                <th>
+                    Quốc tịch
+                </th>
+                <th>Tùy chỉnh</th>
+            </tr>
+        </tfoot>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenTacGia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgaySinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuocTich)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MaTacGia }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.MaTacGia }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MaTacGia })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>
